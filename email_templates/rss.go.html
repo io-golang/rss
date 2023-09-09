@@ -1,0 +1,18 @@
+<div class="channel">
+  {{ range .Channels }}
+    <h1>{{.Title}}</h1>
+    <em>{{.Description}}</em>
+    {{ range .Items }}
+      <div class="item">
+        <h3>
+          <a href="{{.Link}}">{{.Title}}</a>
+        </h3>
+        <em>
+          {{.PubDate}}
+        </em>
+        <div class="item-content">{{.Description}}</div>
+      </div>
+    {{ end }}
+  
+  {{ end }}
+</div>

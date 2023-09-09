@@ -1,0 +1,48 @@
+body {
+  background: whitesmoke;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+  
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h1,h3,a {
+  color: green;
+}
+
+.channels {
+  width: 80%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+
+.channel {
+  margin-top: 3rem;
+}
+
+.feed:first-child {
+  margin-top: 0;
+}
+
+.item {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  border: 5px solid green;
+  border-radius: 10px;
+  color: whitesmoke;
+  background: black;
+}
+
+.item-content {
+  line-height: 1.5rem;
+  margin-top: 1rem;
+  overflow: hidden;
+}
