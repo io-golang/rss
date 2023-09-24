@@ -1,0 +1,50 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: rss
+  namespace: {{ .Release.Namespace }}
+spec:
+  schedule: "0 5 * * *"
+  timeZone: "America/New_York"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: rss
+            image: iogolang/rss:latest
+            imagePullPolicy: IfNotPresent
+            command: ["./app"]
+            env:
+            - name: FROM
+              valueFrom:
+                secretKeyRef:
+                  name: rss
+                  key: from
+            - name: TO
+              valueFrom:
+                secretKeyRef:
+                  name: rss
+                  key: to
+            - name: PASSWD
+              valueFrom:
+                secretKeyRef:
+                  name: rss
+                  key: passwd
+            - name: HOST
+              valueFrom:
+                secretKeyRef:
+                  name: rss
+                  key: host
+            - name: PORT
+              valueFrom:
+                secretKeyRef:
+                  name: rss
+                  key: port
+            - name: RSS_URLS
+              valueFrom:
+                secretKeyRef:
+                  name: rss
+                  key: rss_urls
+          restartPolicy: Never
+          concurrencyPolicy: Replace
